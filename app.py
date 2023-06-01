@@ -281,7 +281,7 @@ if __name__ == '__main__':
 
 
 
-@app.route('/home')
+@app.route('/')
 def home():
 
     # Retrieve images from the "home_folder" in Cloudinary
