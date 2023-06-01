@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Butterflies</title>
+    <style>
+        /* Add some padding to the body */
+        body {
+            background-color: #e6e8e7;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Center the title */
+        h1 {
+            text-align: center;
+        }
+
+        /* Style the title */
+#title {
+  align-items: center;
+  background-color: #2b6b50;
+  justify-content: space-between;
+    padding-top: 20px; /* Adjust the top padding value */
+    padding-bottom: 110px; /* Adjust the bottom padding value */
+  max-width: 100%;
+  z-index: 1;
+            position: relative;
+
+}
+
+        /* Style the title text */
+        #title h1 {
+            position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  justify-content: center;
+            color: white;
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 30px;
+            font-family: sans-serif;
+        }
+
+#logo {
+  max-width: 200px;
+    position: absolute;
+    left: 80px;
+}
+
+#map {
+  max-width: 210px;    
+position: absolute;
+    right: 80px
+}
+
+
+       /* Create a separate container for the menu-section*/
+        /* Style the menu-section*/
+
+/* Style the menu-section container */
+#menu-section{
+  background-color: #4b966e;
+  padding: 20px;
+  width: 100%;
+  z-index: 1;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding and border within the element's dimensions */  
+}
+/* Style the menu */
+#menu {
+    background-color: #475059;
+    display: flex;
+    max-width: 100%; 
+    margin-top: 40px ; /* Set top and bottom margin to 40px */
+margin-bottom: 0;
+    justify-content: space-between; /* Add this property to evenly distribute the items */
+}
+
+
+        /* Style the menu links */
+        #menu a {
+            text-decoration: none;
+            color: #fafcfa;
+            font-family: sans-serif;
+            justify-content: center; /* Center the menu horizontally */
+            margin: 0 3px; /* Add margin to create space between each link */
+            margin-right: auto; /* Add auto margin to push the search container to middle*/
+            font-size: 18px;
+  cursor: pointer;
+            margin-right: auto; /* Add auto margin to push the search container to middle*/
+    background-color: #475059;
+    padding: 10px 10px; /* Increase the top and bottom padding to make the menu taller */
+    display: flex;
+    max-width: 100%; 
+margin-bottom: 0;
+    justify-content: space-between; /* Add this property to evenly distribute the items */
+        }
+
+        /* Style the family-div text */
+        #family-div h3 {
+            color: #475059;
+            margin: 0;
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 30px;
+            margin-top: 40px;
+            font-family: sans-serif;
+            text-decoration: none;
+        }
+
+/* Create a grid layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    justify-items: center;
+    width: 95%;
+    margin: 0 auto; /* Center the grid horizontally */
+    box-sizing: border-box; /* Include padding within the element's dimensions */
+    grid-gap: 60px; /* Add the desired gap value between images */
+}
+
+/* Style the grid items */
+.grid-item {
+    text-align: center;
+    width: 100%;
+    margin-top: 15px; /* Add margin above each grid item */
+    margin-bottom: 15px; /* Add margin below each grid item */
+    width: 270px;
+    height: 182px;
+}
+
+
+        /* Create a separate container for the photos */
+        #photo-section {
+    margin-top: 60px; /* Adjust the value as needed to create space below the header */
+    padding: 20px;
+    background-color: #e6e8e7;
+    box-sizing: border-box; /* Include padding and border within the element's dimensions */
+    width: 95%;
+    grid-gap: 20px; /* Add the desired gap value between images */
+    margin: 0 auto; /* Center the section horizontally */
+margin-bottom: 45px;
+}
+
+        /* Style the image */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        /* Style the image captions */
+        .caption {
+            margin-top: 5px;
+        }
+
+        /* Style the full-screen image overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        /* Style the full-screen image */
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        /* Style the left and right arrow icons */
+        .overlay .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .overlay .left-arrow {
+            left: 20px;
+        }
+
+        .overlay .right-arrow {
+            right: 20px;
+        }
+
+#wrapper {
+  position: relative;
+  min-height: 100%; /* Set the minimum height of the wrapper to 100% */
+}
+
+#bottom-div {
+  background-color: #475059;
+  padding: 10px 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  color: #fafcfa;
+  font-family: sans-serif;
+  text-align: center;
+  align-items: center;
+  box-sizing: border-box;
+            font-size: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+
+#introduction-div {
+padding-top: 0;
+    padding-left: 20px; /* Add padding to create a gap */
+    padding-right: 20px; /* Add padding to create a gap */
+            display: flex;
+            max-width: 100%;
+          font-size: 20px;
+            font-family: sans-serif;
+            justify-content: left; 
+        }
+
+#order h2 {
+  display: flex;
+  max-width: 100%;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+color: #2b6b50;
+  font-family: sans-serif;
+  font-weight: bold;
+  justify-content: center;
+  position: relative;
+}
+
+#bee-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+
+}
+
+#butterfly {
+  width: 60px;
+  margin-right: 20px;
+}
+
+#butterfly2{
+  width: 60px;
+  margin-left: 20px;
+}
+
+#iNat{
+  width: 140px;
+height: 30px;
+  margin-right: 55px;
+  position: absolute;
+  bottom: 0;
+  top: 50%;
+  right: 55px;
+  transform: translateY(-50%);
+}
+
+h2 {
+  margin-top: 10px;
+}
+
+
+        /* Style the subfolder headings */
+        .grid-container h3 {
+            margin-top: 30px; /* Add margin above the subfolder headings */
+
+  font-weight: bold; /* Make the text bold */
+        }
+
+
+    .exit-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+.overlay {
+  display: none;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    text-decoration: none;
+    color: #fafcfa;
+    font-family: sans-serif;
+    justify-content: center; /* Center the menu horizontally */
+    margin: auto 3px; /* Add margin to create space between each link */
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex; /* Add flex display */
+    align-items: center; /* Center vertically */
+    height: 100%; /* Set the height to occupy the full height of the menu bar */
+}
+
+
+
+
+/* Dropdown Button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  /* Add hover/focus styles if needed */
+}
+
+/* The container div - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+            justify-content: center; /* Center the menu horizontally */
+            margin: 0 3px; /* Add margin to create space between each link */
+            margin-right: auto; /* Add auto margin to push the search container to middle*/
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  text-decoration: none;
+  color: #fafcfa;
+  font-family: sans-serif;
+  justify-content: center;
+  margin-right: auto;
+  display: block;
+  padding: 12px 16px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #bfbfbf;
+}
+
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+background-color: #bfbfbf;
+}
+</style>
+</head>
+<body>
+
+<div id="wrapper">
+ 
+<div id="title">
+
+  <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+    <h1>Insects of Papua New Guinea</h1>
+  <img id="map" src="{{ url_for('static', filename='map.png') }}" alt="Map">
+
+    </div>
+
+<div id="menu-section">
+  <div id="menu">
+    <a href="/home">Home</a>
+    <a href="/blattodea">Blattodea</a>
+    <a href="/coleoptera">Coleoptera</a>
+    <a href="/diptera">Diptera</a>
+    <a href="/hemiptera">Hemiptera</a>
+    <a href="/hymenoptera">Hymenoptera</a>
+    <div class="dropdown">
+      <button class="dropbtn">Lepidoptera 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/butterflies">Butterflies</a>
+        <a href="/moths">Moths</a>
+      </div>
+    </div>
+    <a href="/mantodea">Mantodea</a>
+    <div class="dropdown">
+      <button class="dropbtn">Odonata 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/dragonflies">Dragonflies</a>
+        <a href="/damselflies">Damselflies</a>
+      </div>
+    </div>
+    <a href="/orthoptera">Orthoptera</a>
+    <a href="/phasmida">Phasmida</a>
+    <a href="/trichoptera">Trichoptera</a>
+  </div>
+
+<div id="photo-section">
+<div id="order">
+<div id="bee-container">
+    <h2> <img id="butterfly" src="{{ url_for('static', filename='butterfly.png') }}" alt="butterfly"> Butterflies <img id="butterfly2" src="{{ url_for('static', filename='butterfly2.png') }}" alt="butterfly2"></h2>
+
+</div>
+   </div>
+
+    <div id="introduction-div">
+
+<p>Butterflies, like moths, belong to the order Lepidoptera. They are known for their vibrant colours, delicate wing structures, and charismatic flight. Butterflies are typically diurnal, being active during the day, and are commonly seen visiting flowers for nectar. There are around 800 species in Papua New Guinea.
+
+<br>
+
+<br>
+
+<strong>Identification Tips</strong>: They have slender bodies, clubbed antennae, and two pairs of large, often colorful wings. When identifying butterflies, observe their body shape, wing structure, and antennae. Pay attention to their color patterns, which can vary dramatically between species and even within species.</p>
+
+    </div>
+
+<div id="family-div">
+  {% block content %}{% endblock %}
+
+  {% for subfolder in subfolders %}
+    <div class="subfolder-section">
+      <h3 class="subfolder-title">{{ subfolder }}</h3>
+      <div class="grid-container">
+        {% for image in images_by_subfolder[subfolder] %}
+          <div class="grid-item">
+            <img src="{{ image['secure_url'] }}" alt="{{ image['public_id'] }}" width="270" height="182" quality="auto" onclick="openFullscreen(this)">
+            <p class="image-title">
+              {% set filename = image.public_id.split('_')[-1].split('.')[0] | basename %}
+              {% if "'" in filename %}
+                {% set italicized_words = filename.split("'") %}
+                {% for word in italicized_words %}
+                  {% if loop.index % 2 == 0 %}
+                    <em>{{ word }}</em>
+                  {% else %}
+                    {{ word }}
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                {{ filename }}
+              {% endif %}
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="overlay">
+    <span class="arrow left-arrow" onclick="changeImage(-1)">&#10094;</span>
+    <img id="fullscreen-img">
+    <span class="arrow right-arrow" onclick="changeImage(1)">&#10095;</span>
+      <div class="exit-button" onclick="closeFullscreen()">&#10005;</div>
+</div>
+</div>
+
+<div id="bottom-div">
+  <a href="https://www.inaturalist.org/people/2993351" target="_blank">
+    <img id="iNat" src="{{ url_for('static', filename='iNat.png') }}" alt="iNat">
+  </a>
+  <p>Any feedback, especially in relation to identifications, is always gratefully received. I would also welcome the use of my photos, should the appropriate credit naturally be given. You can find me at <strong>jtwareing@gmail.com</strong> and</p>
+</div>
+  </div>
+<script>
+
+var currentImageIndex = 0;
+var isFullscreenOpen = false;
+
+// Open full-screen mode
+function openFullscreen(img) {
+  const images = document.querySelectorAll('.grid-item img');
+  const fullscreenImg = document.getElementById('fullscreen-img');
+  const overlay = document.querySelector('.overlay');
+const currentSubfolder = images[currentImageIndex].dataset.subfolder;
+
+
+  // Find the index of the clicked image in the list of images
+  for (let i = 0; i < images.length; i++) {
+    if (images[i] === img) {
+      currentImageIndex = i;
+      break;
+    }
+  }
+
+  // Update the source of the full-screen image
+  fullscreenImg.src = img.src;
+
+  // Show the full-screen overlay
+  overlay.style.display = 'flex';
+
+  // Set the full-screen mode state
+  isFullscreenOpen = true;
+
+  // Add event listener for keyboard arrow keys
+  document.addEventListener('keydown', handleKeyPress);
+
+  // Add event listener to close full-screen mode when clicking outside the image
+  overlay.addEventListener('click', closeFullscreen);
+
+  // Add event listener for left arrow click
+  const leftArrow = document.querySelector('.left-arrow');
+  leftArrow.addEventListener('click', showPreviousImageOnClick);
+
+  // Add event listener for right arrow click
+  const rightArrow = document.querySelector('.right-arrow');
+  rightArrow.addEventListener('click', showNextImageOnClick);
+}
+
+
+// Show the previous image on arrow click
+function showPreviousImageOnClick(event) {
+  event.stopPropagation(); // Prevent overlay click event
+  showPreviousImage();
+}
+
+// Show the next image on arrow click
+function showNextImageOnClick(event) {
+  event.stopPropagation(); // Prevent overlay click event
+  showNextImage();
+}
+
+// Show the previous image
+function showPreviousImage() {
+  const images = document.querySelectorAll('.grid-item img');
+  const fullscreenImg = document.getElementById('fullscreen-img');
+
+  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+  fullscreenImg.src = images[currentImageIndex].src;
+}
+
+// Show the next image
+function showNextImage() {
+  const images = document.querySelectorAll('.grid-item img');
+  const fullscreenImg = document.getElementById('fullscreen-img');
+
+  currentImageIndex = (currentImageIndex + 1) % images.length;
+  fullscreenImg.src = images[currentImageIndex].src;
+}
+
+// Function to handle keyboard arrow key press
+function handleKeyPress(event) {
+  if (isFullscreenOpen) {
+    const images = document.querySelectorAll('.grid-item img');
+    const fullscreenImg = document.getElementById('fullscreen-img');
+
+    if (event.key === 'ArrowLeft') {
+      // Show the previous image
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      fullscreenImg.src = images[currentImageIndex].src;
+      event.preventDefault(); // Prevent default behavior of arrow keys
+    } else if (event.key === 'ArrowRight') {
+      // Show the next image
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      fullscreenImg.src = images[currentImageIndex].src;
+      event.preventDefault(); // Prevent default behavior of arrow keys
+    }
+  }
+}
+
+// Close full-screen mode
+function closeFullscreen() {
+  const overlay = document.querySelector('.overlay');
+
+  overlay.style.display = 'none';
+  document.removeEventListener('keydown', handleKeyPress);
+
+  // Set the full-screen mode state
+  isFullscreenOpen = false;
+}
+
+// Close full-screen mode when the page loads
+document.addEventListener('DOMContentLoaded', function () {
+  // Add a check to close full-screen mode only if it's open
+  if (isFullscreenOpen) {
+    closeFullscreen();
+  }
+});
+
+</script>
+
+</body>
+</html>
