@@ -103,7 +103,7 @@ margin-bottom: 0;
   color: #fafcfa;
   flex-wrap: wrap;
   justify-content: center;
-  width: 90%;
+  width: 95%;
   margin: 0 auto; /* Center the tiles horizontally */
   box-sizing: border-box; /* Include padding within the element's dimensions */
     background-color: #e6e8e7;
@@ -113,8 +113,8 @@ margin-bottom: 0;
 /* Style the tiles */
 .tile {
   position: relative;
-  width: 220px;
-  height: 150px;
+  width: 260px;
+  height: 180px;
   margin: 10px;
   overflow: hidden;
   transition: transform 0.8s ease-in-out; /* Add transition for smooth animation */
@@ -176,7 +176,7 @@ height: 30px;
 #introduction-div {
 
             display: flex;
-            width: 90%;
+            width: 95%;
           font-size: 20px;
             color: #475059;
             font-family: sans-serif;
@@ -206,7 +206,7 @@ margin-top: 35px;
 
 #bee-container {
   display: flex;
-            width: 90%;
+            width: 95%;
   align-items: center;
   justify-content: center;
             color: #475059;
@@ -312,7 +312,7 @@ background-color: #bfbfbf;
 
 <div id="menu-section">
   <div id="menu">
-    <a href="/home">Home</a>
+    <a href="/">Home</a>
     <a href="/blattodea">Blattodea</a>
     <a href="/coleoptera">Coleoptera</a>
     <a href="/diptera">Diptera</a>
@@ -363,7 +363,14 @@ Any feedback, especially in relation to identifications, is always gratefully re
 
     </div>
 
-<div class="tile-container"></div>
+<div class="tile-container">
+  {% for image in images %}
+    <div class="tile">
+<img src="{{ image['secure_url'] }}" alt="{{ image['public_id'] }}" class="tile-image">
+    </div>
+  {% endfor %}
+</div>
+
 
 <div id="bottom-div">
   <a href="https://www.inaturalist.org/people/2993351" target="_blank">
@@ -381,24 +388,23 @@ const tileContainer = document.querySelector('.tile-container');
 // Array of image filenames
 const imageFilenames = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg', 'image6.jpg'];
 
-// Create the tiles dynamically
-imageFilenames.forEach(filename => {
-  // Create a tile element
-  const tile = document.createElement('div');
-  tile.classList.add('tile');
+  // Example code to load images dynamically
+  const tileContainer = document.querySelector('.tile-container');
 
-  // Create an image element
-  const image = document.createElement('img');
-  image.src = `static/home/Tiles/${filename}`; // Modify the image source accordingly
-  image.alt = 'Image';
-  image.classList.add('tile-image');
+  // Loop through the images and create the tiles dynamically
+  {% for image in images %}
+    const tile = document.createElement('div');
+    tile.classList.add('tile');
 
-  // Append the image to the tile
-  tile.appendChild(image);
+    const imageElement = document.createElement('img');
+    imageElement.src = "{{ image['secure_url'] }}";
+    imageElement.alt = "{{ image['public_id'] }}";
+    imageElement.classList.add('tile-image');
 
-  // Append the tile to the tile container
-  tileContainer.appendChild(tile);
-});
+    tile.appendChild(imageElement);
+    tileContainer.appendChild(tile);
+  {% endfor %}
+</script>
 
 
 
